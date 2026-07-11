@@ -85,4 +85,20 @@ describe('Tree', () => {
       expect(tree.includes(8)).toBeFalsy();
     });
   });
+
+  describe('levelOrderForEach', () => {
+    it('should push each element into an array', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+      const array = [];
+      tree.levelOrderForEach((value) => array.push(value));
+
+      expect(array).toEqual([4, 2, 6, 1, 3, 5, 7]);
+    });
+
+    it('should throw Error if no callback is provided', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+
+      expect(() => tree.levelOrderForEach()).toThrow(Error);
+    });
+  });
 });

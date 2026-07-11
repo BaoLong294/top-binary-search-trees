@@ -77,4 +77,19 @@ export class Tree {
       }
     }
   }
+
+  levelOrderForEach(callback) {
+    if (typeof callback !== 'function')
+      throw new Error('Required callback function');
+
+    let queue = [];
+    queue.push(this.root);
+
+    while (queue.length > 0) {
+      const node = queue.shift();
+      callback(node.data);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+  }
 }
