@@ -178,4 +178,22 @@ export class Tree {
 
     return current === null ? undefined : count;
   }
+
+  isBalanced() {
+    function _checkBalance(node) {
+      if (!node) return 0;
+
+      const left = _checkBalance(node.left);
+      if (left === -1) return -1;
+
+      const right = _checkBalance(node.right);
+      if (right === -1) return -1;
+
+      if (Math.abs(left - right) > 1) return -1;
+
+      return 1 + Math.max(left, right);
+    }
+
+    return _checkBalance(this.root) !== -1;
+  }
 }

@@ -201,4 +201,21 @@ describe('Tree', () => {
       expect(tree.depth(8)).toBeUndefined();
     });
   });
+
+  describe('isBalanced', () => {
+    it('should return true if the tree is balanced', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+
+      expect(tree.isBalanced()).toBeTruthy();
+    });
+
+    it('should return false if the tree is not balanced', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+      tree.insert(8);
+      tree.insert(9);
+      tree.insert(10);
+
+      expect(tree.isBalanced()).toBeFalsy();
+    });
+  });
 });
