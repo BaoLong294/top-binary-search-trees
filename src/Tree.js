@@ -159,4 +159,23 @@ export class Tree {
 
     return this._heightOfNode(current);
   }
+
+  depth(value) {
+    if (!this.root) return undefined;
+
+    let current = this.root;
+    let count = 0;
+
+    while (current !== null && value !== current.data) {
+      if (value < current.data) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+
+      count++;
+    }
+
+    return current === null ? undefined : count;
+  }
 }

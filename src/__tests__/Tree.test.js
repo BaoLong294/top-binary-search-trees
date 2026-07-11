@@ -175,4 +175,30 @@ describe('Tree', () => {
       expect(tree.height(8)).toBeUndefined();
     });
   });
+
+  describe('depth', () => {
+    it('should return 0 if the value at the root', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+
+      expect(tree.depth(4)).toBe(0);
+    });
+
+    it('should return 1 if the value at first floor', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+
+      expect(tree.depth(2)).toBe(1);
+    });
+
+    it('should return 2 if the value at second floor', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+
+      expect(tree.depth(3)).toBe(2);
+    });
+
+    it('should return undefined if value does not exist', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+
+      expect(tree.depth(8)).toBeUndefined();
+    });
+  });
 });
