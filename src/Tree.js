@@ -92,4 +92,46 @@ export class Tree {
       if (node.right) queue.push(node.right);
     }
   }
+
+  inOrderForEach(callback) {
+    if (typeof callback !== 'function') throw new Error('Required callback');
+
+    function traverse(node, callback) {
+      if (!node) return;
+
+      traverse(node.left, callback);
+      callback(node.data);
+      traverse(node.right, callback);
+    }
+
+    traverse(this.root, callback);
+  }
+
+  preOrderForEach(callback) {
+    if (typeof callback !== 'function') throw new Error('Required callback');
+
+    function traverse(node, callback) {
+      if (!node) return;
+
+      callback(node.data);
+      traverse(node.left, callback);
+      traverse(node.right, callback);
+    }
+
+    traverse(this.root, callback);
+  }
+
+  postOrderForEach(callback) {
+    if (typeof callback !== 'function') throw new Error('Required callback');
+
+    function traverse(node, callback) {
+      if (!node) return;
+
+      traverse(node.left, callback);
+      traverse(node.right, callback);
+      callback(node.data);
+    }
+
+    traverse(this.root, callback);
+  }
 }

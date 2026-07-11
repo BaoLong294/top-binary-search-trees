@@ -101,4 +101,52 @@ describe('Tree', () => {
       expect(() => tree.levelOrderForEach()).toThrow(Error);
     });
   });
+
+  describe('inOrderForEach', () => {
+    it('should traverse in order and call callback', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+      const result = [];
+      tree.inOrderForEach((value) => result.push(value));
+
+      expect(result).toEqual([1, 2, 3, 4, 5, 6, 7]);
+    });
+
+    it('should throw Error if no callback is provided', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+
+      expect(() => tree.inOrderForEach()).toThrow(Error);
+    });
+  });
+
+  describe('preOrderForEach', () => {
+    it('should traverse preorder and call callback', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+      const result = [];
+      tree.preOrderForEach((value) => result.push(value));
+
+      expect(result).toEqual([4, 2, 1, 3, 6, 5, 7]);
+    });
+
+    it('should throw Error if no callback is provided', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+
+      expect(() => tree.preOrderForEach()).toThrow(Error);
+    });
+  });
+
+  describe('postOrderForEach', () => {
+    it('should traverse postorder and call callback', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+      const result = [];
+      tree.postOrderForEach((value) => result.push(value));
+
+      expect(result).toEqual([1, 3, 2, 5, 7, 6, 4]);
+    });
+
+    it('should throw Error if no callback is provided', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+
+      expect(() => tree.postOrderForEach()).toThrow(Error);
+    });
+  });
 });
