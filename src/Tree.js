@@ -134,4 +134,29 @@ export class Tree {
 
     traverse(this.root, callback);
   }
+
+  _heightOfNode(node) {
+    if (!node) return -1;
+
+    return (
+      1 +
+      Math.max(this._heightOfNode(node.left), this._heightOfNode(node.right))
+    );
+  }
+
+  height(value) {
+    let current = this.root;
+
+    while (current !== null && value !== current.data) {
+      if (value < current.data) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
+
+    if (!current) return undefined;
+
+    return this._heightOfNode(current);
+  }
 }

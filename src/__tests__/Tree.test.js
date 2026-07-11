@@ -149,4 +149,30 @@ describe('Tree', () => {
       expect(() => tree.postOrderForEach()).toThrow(Error);
     });
   });
+
+  describe('height', () => {
+    it('should return 0 if the value at the leaf', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+
+      expect(tree.height(3)).toBe(0);
+    });
+
+    it('should return 1 if the value above the leaf', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+
+      expect(tree.height(6)).toBe(1);
+    });
+
+    it('should return 2 for root node', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+
+      expect(tree.height(4)).toBe(2);
+    });
+
+    it('should return undefined if value does not exist', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+
+      expect(tree.height(8)).toBeUndefined();
+    });
+  });
 });
