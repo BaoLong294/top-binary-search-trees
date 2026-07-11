@@ -218,4 +218,18 @@ describe('Tree', () => {
       expect(tree.isBalanced()).toBeFalsy();
     });
   });
+
+  describe('rebalance', () => {
+    it('should rebalance the tree if the tree was unbalanced', () => {
+      const tree = new Tree([1, 2, 3, 4, 6, 7]);
+      tree.insert(8);
+      tree.insert(9);
+      tree.insert(10);
+
+      expect(tree.isBalanced()).toBeFalsy();
+
+      tree.rebalance();
+      expect(tree.isBalanced()).toBeTruthy();
+    });
+  });
 });

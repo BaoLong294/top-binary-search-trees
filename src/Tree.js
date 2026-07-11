@@ -196,4 +196,10 @@ export class Tree {
 
     return _checkBalance(this.root) !== -1;
   }
+
+  rebalance() {
+    const tree = [];
+    this.inOrderForEach((node) => tree.push(node));
+    this.root = this._buildTree(tree);
+  }
 }
