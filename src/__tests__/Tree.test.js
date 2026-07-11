@@ -32,4 +32,27 @@ describe('Tree', () => {
       expect(tree.includes(7)).toBeTruthy();
     });
   });
+
+  describe('insert', () => {
+    it('should set the node with this value as the root', () => {
+      const tree = new Tree([]);
+      tree.insert(29);
+
+      expect(tree.includes(29)).toBeTruthy();
+    });
+
+    it('should insert the node with this value in the correct spot', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+      tree.insert(29);
+
+      expect(tree.includes(29)).toBeTruthy();
+    });
+
+    it('should do nothing if value already exists', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+      tree.insert(4);
+
+      expect(tree.includes(4)).toBeTruthy();
+    });
+  });
 });

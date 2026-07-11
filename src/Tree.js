@@ -25,4 +25,33 @@ export class Tree {
     else if (value < node.data) return this.includes(value, node.left);
     else return this.includes(value, node.right);
   }
+
+  insert(value) {
+    let node = new Node(value);
+
+    if (!this.root) {
+      this.root = node;
+      return this;
+    }
+
+    let current = this.root;
+
+    while (true) {
+      if (value === current.data) return undefined;
+
+      if (value < current.data) {
+        if (!current.left) {
+          current.left = node;
+          return this;
+        }
+        current = current.left;
+      } else {
+        if (!current.right) {
+          current.right = node;
+          return this;
+        }
+        current = current.right;
+      }
+    }
+  }
 }
