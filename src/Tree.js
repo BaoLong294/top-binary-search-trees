@@ -54,4 +54,27 @@ export class Tree {
       }
     }
   }
+
+  deleteItem(value, node = this.root) {
+    if (!node) return null;
+
+    if (value < node.data) {
+      node.left = this.deleteItem(value, node.left);
+      return node;
+    } else if (value > node.data) {
+      node.right = this.deleteItem(value, node.right);
+      return node;
+    } else {
+      if (!node.left && !node.right) return null;
+      else if ((!node.left && node.right) || (node.left && !node.right)) {
+        return node.left || node.right;
+      } else {
+        let min = node.right;
+        while (min.left) min = min.left;
+        node.data = min.data;
+        node.right = this.deleteItem(min.data, node.right);
+        return node;
+      }
+    }
+  }
 }

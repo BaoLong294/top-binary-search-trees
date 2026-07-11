@@ -55,4 +55,34 @@ describe('Tree', () => {
       expect(tree.includes(4)).toBeTruthy();
     });
   });
+
+  describe('deleteItem', () => {
+    it('should remove leaf node', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+      tree.deleteItem(1);
+
+      expect(tree.includes(1)).toBeFalsy();
+    });
+
+    it('should remove node has 1 child', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7, 8]);
+      tree.deleteItem(8);
+
+      expect(tree.includes(8)).toBeFalsy();
+    });
+
+    it('should remove node has 2 childs', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7, 8]);
+      tree.deleteItem(6);
+
+      expect(tree.includes(6)).toBeFalsy();
+    });
+
+    it('should do nothing if the value is not exists', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+      tree.deleteItem(8);
+
+      expect(tree.includes(8)).toBeFalsy();
+    });
+  });
 });
