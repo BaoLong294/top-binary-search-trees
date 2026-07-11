@@ -18,5 +18,11 @@ export class Tree {
     return node;
   }
 
-  include(value) {}
+  includes(value, node = this.root) {
+    if (!node) return false;
+
+    if (value === node.data) return true;
+    else if (value < node.data) return this.includes(value, node.left);
+    else return this.includes(value, node.right);
+  }
 }

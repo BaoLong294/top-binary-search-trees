@@ -18,4 +18,18 @@ describe('Tree', () => {
     expect(tree.root.left.data).toBe(2);
     expect(tree.root.right.data).toBe(6);
   });
+
+  describe('includes', () => {
+    it('should return false if tree is not including the value', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+      expect(tree.includes(0)).toBeFalsy();
+      expect(tree.includes(8)).toBeFalsy();
+    });
+
+    it('should return true if tree is including the value', () => {
+      const tree = new Tree([1, 2, 3, 4, 5, 6, 7]);
+      expect(tree.includes(1)).toBeTruthy();
+      expect(tree.includes(7)).toBeTruthy();
+    });
+  });
 });
